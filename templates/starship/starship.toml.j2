@@ -1,0 +1,84 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+$directory\
+[](fg:#39BAE6 bg:#409FFF4D)\
+$aws\
+$azure\
+$terraform\
+$git_branch\
+$git_status\
+[ ](fg:#409FFF4D)\
+$time\
+[ ](fg:#565B66)\
+$cmd_duration\
+$line_break\
+$character
+"""
+
+add_newline = true
+
+palette = "ayu"
+
+[palettes.ayu]
+blue = "#39BAE6"
+blue_text = "#0D1017"
+yellow-orange = "#FF8F40"
+vcs-modified = "#73B8FF"
+vcs-removed = "#F26D78"
+vcs-added = "#7FD962"
+
+[directory]
+style = "bg:blue fg:blue_text"
+format = "[ $path ]($style)"
+truncation_length = 6
+truncation_symbol = "…/"
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[package]
+disabled = true
+
+[git_branch]
+symbol = ""
+style = "bg:#409FFF4D fg:#BFBDB6"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+ignore_submodules = true
+style = "bg:#409FFF4D fg:#BFBDB6"
+format = '[$all_status$ahead_behind ]($style)'
+deleted = '[✘:${count}](vcs-removed) '
+modified = '[!:${count}](vcs-modified) '
+renamed = '»:${count} '
+staged = '++:${count} '
+untracked = '[?:${count}](vcs-added) '
+
+
+[python]
+style  = "bg:#AAD94C"
+format = '[ $symbol ($version) ]($style)'
+pyenv_version_name = true
+
+[time]
+disabled = false
+use_12hr = false
+
+[line_break]
+disabled = false
+
+[cmd_duration]
+disabled = false
+
+[aws]
+disabled = true
+force_display = false
+
+[azure]
+disabled = true
+
+[terraform]
+disabled = true

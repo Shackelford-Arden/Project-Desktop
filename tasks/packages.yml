@@ -1,0 +1,16 @@
+---
+- name: Install Brew Packages - Formulae
+  community.general.homebrew:
+    name: "{{ brew_packages }}"
+    state: present
+  tags:
+    - formulae
+
+- name: Install Brew Packages - Casks
+  community.general.homebrew_cask:
+    name: "{{ brew_casks }}"
+    state: present
+  tags:
+    - casks
+
+...

@@ -1,0 +1,21 @@
+---
+- name: Run Networking Tasks
+  include_tasks: networking.yml
+
+- name: Install Packages
+  include_tasks: packages.yml
+  tags:
+    - packages
+
+- name: Pull Git-Based CLI Apps
+  ansible.builtin.git:
+    repo: "{{ app.repo }}"
+    dest: "{{ app.dest }}"
+    clone: yes
+    update: yes
+    depth: "{{ app.depth | default(omit) }}"
+  loop: "{{ git_apps }}"
+  loop_control:
+    loop_var: "app"
+
+...

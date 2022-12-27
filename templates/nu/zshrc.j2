@@ -1,0 +1,12 @@
+
+eval "$(starship init zsh)"
+
+# User configuration
+source ~/.custom_aliases
+
+# Customer Env Variables
+{% for env_item in env_vars %}
+
+export {{ env_item.key_name }}={{ env_item.key_value }}
+
+{% endfor %}

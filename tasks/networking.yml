@@ -1,0 +1,10 @@
+---
+- name: Generate /etc/hosts File
+  when: hosts_entries is defined
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "{{ item.ip_address }} {{ ' '.join(item.host_names }}"
+  loop: "{{ hosts_entries }}"
+
+...

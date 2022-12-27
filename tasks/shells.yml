@@ -1,0 +1,27 @@
+---
+- name: Ensure Key Dirs Exist - Home Directories
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.config/starship"
+    state: directory
+  loop:
+    - "/.cache/starship"
+
+- name: Configure Starship
+  ansible.builtin.template:
+    src: "starship/{{ item.src }}"
+    dest: "{{ lookup('env', 'HOME') }}/{{ item.dest }}"
+  loop:
+    - src: "config.nu.j2"
+      dest: ".cache/starship/config.nu"
+    - src: "starship.toml.j2"
+      dest: ".config/starship.toml"
+
+- name: Configure zsh
+  ansible.builtin.template:
+    src: "zsh/{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: "zshrc.j2"
+      dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+
+...

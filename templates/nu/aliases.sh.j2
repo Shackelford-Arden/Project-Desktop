@@ -1,0 +1,47 @@
+
+# Silly SSL Stuff
+# export CONFIGURE_OPTS="--with-openssl=/opt/homebrew/opt/openssl@3/bin/openssl"
+# export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+# export LD_RUN_PATH="/opt/homebrew/opt/openssl@3/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+# export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+# export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+
+# MacOS - GNU Utils via Brew
+if [[ -f '/usr/local/bin/gbase64' ]]
+then
+    alias base64='/usr/local/bin/gbase64'
+fi
+
+if [[ -f '/opt/homebrew/bin/exa' ]]
+then
+    alias ls='/opt/homebrew/bin/exa'
+fi
+
+if [[ -f '/usr/local/bin/gsed' ]]
+then
+    alias sed='/usr/local/bin/gsed'
+fi
+
+if [[ -f '/usr/local/bin/ggrep' ]]
+then
+    alias grep='/usr/local/bin/ggrep'
+fi
+
+# Python
+## Poetry
+export PATH="$HOME/.local/bin:$PATH"
+
+## Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+if [[ -z "$VIRTUAL_ENV" ]]; then
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# NodeJS
+## nodenv
+export PATH="$PATH:/usr/local/bin"

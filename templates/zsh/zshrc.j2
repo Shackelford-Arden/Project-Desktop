@@ -1,0 +1,11 @@
+
+# Enable Starship Prompt
+eval "$(starship init zsh)"
+
+# Pull in Custom Aliases
+source ~/.custom_aliases
+
+# Pull in any necessary env vars
+{% for env_var_item in zsh_env_vars %}
+export {{ env_var_item.key_name }}={{ env_var_item.key_value }}
+{% endfor %}
