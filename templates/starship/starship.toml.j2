@@ -9,6 +9,8 @@ $terraform\
 $git_branch\
 $git_status\
 [ ](fg:#409FFF4D)\
+$python\
+[ ](fg:#409FFF4D)\
 $time\
 [ ](fg:#565B66)\
 $cmd_duration\
@@ -59,9 +61,12 @@ untracked = '[?:${count}](vcs-added) '
 
 
 [python]
-style  = "bg:#AAD94C"
+symbol = ' '
+style  = 'bg:#AAD94C fg:#409FFF4D'
 format = '[ $symbol ($version) ]($style)'
 pyenv_version_name = true
+detect_extensions = []
+disabled = false
 
 [time]
 disabled = false
